@@ -9,7 +9,9 @@ def main():
     slope4 = findtrees(7, 1)
     slope5 = findtrees(1, 2)
 
-    print(slope1*slope2*slope3*slope4*slope5)
+    print(f"part 1: {slope2}")
+
+    print(f"part 2: {slope1*slope2*slope3*slope4*slope5}")
 
 
 def findtrees(rateX, rateY):
