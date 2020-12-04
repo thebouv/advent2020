@@ -37,8 +37,3 @@ def findtrees(rateX, rateY):
 
 if __name__ == "__main__":
     main()
-
-# print(f"{xpos=}")
-# print(f"{ypos=}")
-# print(f"{botpos=}")
-# print(f"{trees=}")
