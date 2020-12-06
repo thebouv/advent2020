@@ -8,12 +8,12 @@ def main():
     documents = text.split("\n\n")
     documents = [doc.replace("\n", " ") for doc in documents]
 
-    exist_docs = check_existence(documents)
-    valid_docs = check_valid(documents)
+    day1docs = check_existence(documents)
+    day2docs = check_valid(documents)
 
-    print(f"{len(documents)=}")
-    print(f"{exist_docs=}")
-    print(f"{valid_docs=}")
+    print(f"numdocs={len(documents)}")
+    print(f"{day1docs=}")
+    print(f"{day2docs=}")
 
 
 def check_existence(documents):  # part 1
@@ -34,10 +34,8 @@ def check_valid(documents):  # part 2
 
 def validate_doc(doc):
     if check_byr(doc) and check_iyr(doc) and check_eyr(doc) and check_hgt(doc) and check_hcl(doc) and check_ecl(doc) and check_pid(doc):
-        print(f"valid: {doc}")
         return 1
 
-    print(f"invalid: {doc}")
     return 0
 
 
