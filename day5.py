@@ -6,6 +6,7 @@ def main():
     with open('day5.txt') as file:
         tickets = file.read().splitlines()
         print(f"highest seat id: {partone(tickets)}")
+        print(f"missing seat id: {parttwo(tickets)}")
 
 
 def partone(tickets):
@@ -19,8 +20,20 @@ def partone(tickets):
     return highest_seat
 
 
-def parttwo():
-    pass
+def parttwo(tickets):
+    seats = []
+    for ticket in tickets:
+        seats.append(get_boardingpass(ticket)['seat'])
+
+    seats.sort()
+    lowseat = seats[0]
+    highseat = seats[-1]
+
+    possibleseats = range(lowseat, highseat)
+
+    missingseat = list(set(possibleseats).difference(seats))[0]
+
+    return missingseat
 
 
 def get_boardingpass(ticket):
