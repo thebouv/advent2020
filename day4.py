@@ -34,13 +34,15 @@ def check_valid(documents):  # part 2
 
 def validate_doc(doc):
     if check_byr(doc) and check_iyr(doc) and check_eyr(doc) and check_hgt(doc) and check_hcl(doc) and check_ecl(doc) and check_pid(doc):
+        print(f"valid: {doc}")
         return 1
 
+    print(f"invalid: {doc}")
     return 0
 
 
 def check_byr(doc):
-    byr = re.search(r"byr:(\d{4})", doc)
+    byr = re.search(r"byr:(\d{4})\b", doc)
     if byr:
         byr = int(byr.group(1))
         if byr >= 1920 and byr <= 2002:
@@ -49,7 +51,7 @@ def check_byr(doc):
 
 
 def check_iyr(doc):
-    iyr = re.search(r"iyr:(\d{4})", doc)
+    iyr = re.search(r"iyr:(\d{4})\b", doc)
     if iyr:
         iyr = int(iyr.group(1))
         if iyr >= 2010 and iyr <= 2020:
@@ -58,7 +60,7 @@ def check_iyr(doc):
 
 
 def check_eyr(doc):
-    eyr = re.search(r"eyr:(\d{4})", doc)
+    eyr = re.search(r"eyr:(\d{4})\b", doc)
     if eyr:
         eyr = int(eyr.group(1))
         if eyr >= 2020 and eyr <= 2030:
@@ -67,7 +69,7 @@ def check_eyr(doc):
 
 
 def check_hgt(doc):
-    hgt = re.search(r"hgt:(\d+)(\w{2})", doc)
+    hgt = re.search(r"hgt:(\d+)(\w{2})\b", doc)
 
     if hgt:
         hgtnum = int(hgt.group(1))
@@ -85,21 +87,21 @@ def check_hgt(doc):
 
 
 def check_hcl(doc):
-    hcl = re.search(r"hcl:#([0-9a-f]{6})", doc)
+    hcl = re.search(r"hcl:#([0-9a-f]{6})\b", doc)
     if hcl:
         return True
     return False
 
 
 def check_ecl(doc):
-    ecl = re.search(r"ecl:(\w{3})", doc)
+    ecl = re.search(r"ecl:(\w{3})\b", doc)
     if ecl and ecl.group(1) in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']:
         return True
     return False
 
 
 def check_pid(doc):
-    pid = re.search(r"pid:(\d{9})", doc)
+    pid = re.search(r"pid:(\d{9})\b", doc)
     if pid:
         return True
     return False
