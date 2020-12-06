@@ -19,7 +19,7 @@ def partone(tickets):
     return highest_seat
 
 
-def daytwo():
+def parttwo():
     pass
 
 
